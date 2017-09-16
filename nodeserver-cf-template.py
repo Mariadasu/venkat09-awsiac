@@ -30,11 +30,11 @@ from awacs.aws import (
 
 from awacs.sts import AssumeRole
 
-ApplicationName = "example3/jenkins"
-ApplicationPort = "8080"
+ApplicationName = "nodeserver" 
+ApplicationPort = "3000" 
 
-GithubAccount = "venkat09docs"
-GithubAnsibleURL = "https://github.com/{}/Ansible".format(GithubAccount)
+GithubAccount = "EffectiveDevOpsWithAWS"
+GithubAnsibleURL = "https://github.com/{}/ansible".format(GithubAccount)
 
 AnsiblePullCmd = \
     "/usr/local/bin/ansible-pull -U {} {}.yml -i localhost".format(
@@ -46,7 +46,7 @@ PublicCidrIp = str(ip_network(get_ip()))
 
 t = Template()
 
-t.add_description("DevOps in AWS: HelloWorld web application")
+t.add_description("Effective DevOps in AWS: HelloWorld web application")
 
 t.add_parameter(Parameter(
     "KeyPair",
@@ -93,21 +93,6 @@ t.add_resource(Role(
             )
         ]
     )
-))
-
-t.add_resource(IAMPolicy(
-    "Policy",
-    PolicyName="AllowCodePipeline",
-    PolicyDocument=Policy(
-        Statement=[
-            Statement(
-                Effect=Allow,
-                Action=[Action("codepipeline", "*")],
-                Resource=["*"]
-            )
-        ]
-    ),
-    Roles=[Ref("Role")]
 ))
 
 t.add_resource(InstanceProfile(

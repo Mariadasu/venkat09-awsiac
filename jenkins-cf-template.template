@@ -98,7 +98,7 @@
                 "GroupDescription": "Allow SSH and TCP/8080 access",
                 "SecurityGroupIngress": [
                     {
-                        "CidrIp": "49.206.200.235/32",
+                        "CidrIp": "49.206.200.200/32",
                         "FromPort": "22",
                         "IpProtocol": "tcp",
                         "ToPort": "22"
@@ -136,8 +136,8 @@
                                 "#!/bin/bash",
                                 "yum install --enablerepo=epel -y git",
                                 "pip install ansible",
-                                "/usr/local/bin/ansible-pull -U https://github.com/venkat09docs/ansible jenkins.yml -i localhost",
-                                "echo '*/10 * * * * /usr/local/bin/ansible-pull -U https://github.com/venkat09docs/ansible jenkins.yml -i localhost' > /etc/cron.d/ansible-pull"
+                                "/usr/local/bin/ansible-pull -U https://github.com/venkat09docs/Ansible example3/jenkins.yml -i localhost",
+                                "echo '*/10 * * * * /usr/local/bin/ansible-pull -U https://github.com/venkat09docs/Ansible example3/jenkins.yml -i localhost' > /etc/cron.d/ansible-pull"
                             ]
                         ]
                     }
